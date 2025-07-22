@@ -26,6 +26,10 @@ const Index = () => {
     setViewMode('admin');
   };
 
+  const handleBackToLogin = () => {
+    setViewMode('login');
+  };
+
   return (
     <div className="relative min-h-screen">
       {/* Theme Toggle - Fixed position */}
@@ -58,7 +62,7 @@ const Index = () => {
       )}
 
       {viewMode === 'admin' && (
-        <AdminDashboard onBack={handleLogout} />
+        <AdminDashboard onBack={handleBackToLogin} />
       )}
     </div>
   );
