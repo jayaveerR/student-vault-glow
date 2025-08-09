@@ -67,6 +67,7 @@ export const StudentLogin = ({
           {/* Disconnect Button */}
           <div className="pt-2">
             <Button
+              type="button"
               onClick={handleDisconnect}
               variant="outline"
               size="sm"
