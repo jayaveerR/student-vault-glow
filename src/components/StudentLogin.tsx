@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogIn, Sparkles } from 'lucide-react';
+import { LogIn, Sparkles, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +16,16 @@ export const StudentLogin = ({
   const {
     toast
   } = useToast();
+  const handleDisconnect = () => {
+    localStorage.removeItem('student-vault-data');
+    setRollNumber('');
+    toast({
+      title: "Disconnected",
+      description: "All data has been cleared successfully",
+      variant: "default"
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!rollNumber) {
@@ -53,6 +63,19 @@ export const StudentLogin = ({
           <p className="text-lg text-muted-foreground">
             Enter your roll number digits to access your vault
           </p>
+          
+          {/* Disconnect Button */}
+          <div className="pt-2">
+            <Button
+              onClick={handleDisconnect}
+              variant="outline"
+              size="sm"
+              className="glass-card border-destructive/30 hover:border-destructive/50 text-destructive hover:text-destructive"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Disconnect
+            </Button>
+          </div>
         </div>
 
         {/* Login Card */}
